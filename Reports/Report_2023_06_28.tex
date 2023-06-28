@@ -1,0 +1,71 @@
+\documentclass{article}
+
+%%% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}           % Multicolumns documents
+\usepackage{amsmath}            % Math
+\usepackage{amsfonts}           % Math fonts
+
+%%% Geometry
+\usepackage[a4paper, total={7in, 8in}]{geometry}
+
+%%% Figure for multicols
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+\usepackage{caption}
+
+%%% Tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+%%% Title page
+\author{Biagio Trimarchi}
+\date{28 June 2023}
+\title{Extremum Seeking \\ First Report}
+
+
+%%% Document
+\begin{document}
+    \maketitle
+    \begin{multicols*}{2}
+        \section{Introduction}
+
+        \section{Theory}
+        Let us consider the system described by the following block diagram
+        \begin{Figure}
+            \centering
+            \begin{tikzpicture}
+                %%% Cost
+                \node[draw,
+                    minimum width = 2cm,
+                    minimum height = 1.2cm
+                ] (cost) {$J(\theta)$};
+
+                %%% Integrator
+                \node[draw,
+                    minimum width = 2cm,
+                    minimum height = 1.2cm,
+                    below = 1cm of cost
+                ] (integrator) {$-\frac{k}{s}$};
+
+                %%% Sum dither
+                \node[draw,
+                    circle,
+                    minimum size = 0.6cm,
+                    left = 1cm of integrator
+                ] (dither) { $+$ };
+
+                %%% Demodulation
+                \node[draw,
+                    circle,
+                    minimum size = 0.6cm,
+                    right = 1cm of integrator
+                ] (dither) { $ \times $ };
+            \end{tikzpicture}            
+
+            \captionof{figure}{Block diagram of the system}
+        \end{Figure}
+        \section{Simulation Results}
+    \end{multicols*}
+\end{document}
